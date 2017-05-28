@@ -10,12 +10,12 @@ SAMPLE_TRANSCRIPT = """\
 Priya: Okay, let's get started. Thanks everyone for joining the release planning sync.
 Marco: Um, so the main thing is the 2.4 release. QA found two blockers in the export flow.
 Priya: Right. We decided to push the release to next Wednesday so QA has time to retest.
-Lena: I can take the export bug. I will fix the CSV encoding issue by Friday.
+Lena: The export bug is mine. I will fix the CSV encoding issue by Friday.
 Marco: Uh, I'll update the release notes and the changelog by Monday.
 Priya: We agreed to drop the legacy theme from this release because nobody uses it.
-Lena: Someone needs to email the beta customers about the new date.
-Priya: Marco, can you send that email tomorrow?
-Marco: Sure, I will email the beta customers tomorrow.
+Priya: Marco, can you email the beta customers about the new date tomorrow?
+Marco: Sure, no problem.
+Lena: Someone needs to book a room for the release retro next week.
 Priya: Great. Let's wrap up.
 """
 

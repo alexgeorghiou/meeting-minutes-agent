@@ -76,7 +76,9 @@ def detect_speakers(transcript: str) -> list[str]:
     return list(seen)
 
 
-def chunk_transcript(transcript: str, *, max_words: int = 1200, overlap_words: int = 100) -> list[str]:
+def chunk_transcript(
+    transcript: str, *, max_words: int = 1200, overlap_words: int = 100
+) -> list[str]:
     """Split a cleaned transcript into word-bounded chunks on line boundaries.
 
     Lines are never split unless a single line is longer than ``max_words``. The

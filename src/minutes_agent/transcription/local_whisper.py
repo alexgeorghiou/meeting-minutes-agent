@@ -31,7 +31,7 @@ class FasterWhisperTranscriber:
                 from faster_whisper import WhisperModel
             except ImportError as exc:  # pragma: no cover - depends on optional extra
                 raise TranscriptionError(
-                    "faster-whisper is not installed; run `pip install meeting-minutes-agent[local]`"
+                    "faster-whisper is missing; install the [local] extra"
                 ) from exc
             self._model = WhisperModel(
                 self._model_size, device=self._device, compute_type=self._compute_type

@@ -188,7 +188,7 @@ def _month_day(phrase: str, ref: date) -> date | None:
 
 
 def _day_of_month(phrase: str, ref: date) -> date | None:
-    """"5th of March", or a bare "the 15th" meaning the next 15th on/after ``ref``."""
+    """Resolve "5th of March", or a bare "the 15th" meaning the next 15th on/after ``ref``."""
     match = _DAY_MONTH.match(phrase)
     if match and match.group(2) in MONTHS:
         month, day = MONTHS[match.group(2)], int(match.group(1))

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import itertools
+
 import pytest
 
 from minutes_agent.pipeline.text import (
@@ -47,7 +49,9 @@ def test_detect_speakers_in_first_appearance_order() -> None:
 
 
 def test_chunk_small_transcript_is_single_chunk() -> None:
-    assert chunk_transcript("A: one two\nB: three", max_words=50) == ["A: one two\nB: three"]
+    assert chunk_transcript("A: one two\nB: three", max_words=50, overlap_words=5) == [
+        "A: one two\nB: three"
+    ]
 
 
 def test_chunk_respects_budget_and_overlap() -> None:
@@ -58,7 +62,7 @@ def test_chunk_respects_budget_and_overlap() -> None:
     for chunk in chunks:
         assert len(chunk.split()) <= 30
     # the last line of each chunk is repeated at the start of the next
-    for prev, nxt in zip(chunks, chunks[1:], strict=False):
+    for prev, nxt in itertools.pairwise(chunks):
         assert nxt.splitlines()[0] == prev.splitlines()[-1]
     assert chunks[-1].splitlines()[-1].startswith("S9:")
 
