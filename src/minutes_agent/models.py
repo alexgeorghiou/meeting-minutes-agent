@@ -68,6 +68,9 @@ class Minutes(BaseModel):
     key_points: list[str] = Field(default_factory=list)
     decisions: list[Decision] = Field(default_factory=list)
     action_items: list[ActionItem] = Field(default_factory=list)
+    review_notes: list[str] = Field(
+        default_factory=list, description="Validation warnings a human should double-check."
+    )
 
     def unassigned_items(self) -> list[ActionItem]:
         return [item for item in self.action_items if item.owner is None]
