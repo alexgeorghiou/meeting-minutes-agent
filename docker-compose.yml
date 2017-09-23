@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      MINUTES_LLM_PROVIDER: ${MINUTES_LLM_PROVIDER:-fake}
+      MINUTES_TRANSCRIBER: ${MINUTES_TRANSCRIBER:-fake}
+      MINUTES_CORS_ORIGINS: '["http://localhost:8080"]'
+    volumes:
+      - minutes-data:/app/data
+    ports:
+      - "8000:8000"
+
+  web:
+    build: ./web
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  minutes-data:
